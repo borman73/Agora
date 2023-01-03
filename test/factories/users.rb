@@ -5,6 +5,5 @@ FactoryBot.define do
     password
     email
     avatar
-    role
   end
 end

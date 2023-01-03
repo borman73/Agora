@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class UserGroupTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'create' do
+    user_group = create(:user_group)
+    assert user_group.persisted?
+  end
 end
