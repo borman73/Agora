@@ -22,8 +22,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_175745) do
   end
 
   create_table "user_groups", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_user_groups_on_group_id"
+    t.index ["user_id"], name: "index_user_groups_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,21 +37,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_175745) do
     t.string "password_digest"
     t.string "email"
     t.string "avatar"
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "votings", force: :cascade do |t|
     t.string "name"
+    t.bigint "author_id"
     t.text "description"
-    t.string "type"
+    t.string "kind"
     t.boolean "active"
     t.date "start_date"
     t.date "stop_date"
     t.integer "quorum"
+    t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_votings_on_group_id"
   end
 
 end

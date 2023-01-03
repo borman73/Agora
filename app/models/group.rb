@@ -1,9 +1,7 @@
 class Group < ApplicationRecord
+  has_many :user_groups, class_name: 'UserGroup'
+  has_many :users, through: :user_groups, class_name: 'User'
+  has_many :votings, class_name: 'Voting'
 
-  has_many :usergroups
-  has_many :users through: :usergroups
-  has many :votings through: :usergroups
-    
   validates :name, presence: true
-
 end

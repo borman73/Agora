@@ -1,9 +1,7 @@
 class Voting < ApplicationRecord
+  validates :name, :description, :author, presence: true
 
-  validates :name, presence: true
-
-  belongs_to :usergroup
-  has_many :users through: :usergroups
-  belongs_to :group through: :usergroups
-
+  belongs_to :group, class_name: 'Group'
+  belongs_to :author, class_name: 'User'
+  has_many :users, through: :group, class_name: 'User'
 end
