@@ -7,7 +7,7 @@ FactoryBot.define do
     "person#{n}@example.com"
   end
 
-  sequence :boolean, aliases: [:active] do 
+  sequence :boolean, aliases: [:active] do
     true || false
   end
 

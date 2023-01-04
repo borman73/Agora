@@ -15,6 +15,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootsnap', require: false
+gem 'slim-rails'
 
 group :development, :test do
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
