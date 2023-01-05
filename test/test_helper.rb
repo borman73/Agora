@@ -22,9 +22,8 @@ if ENV['COVERAGE']
 end
 
 class ActiveSupport::TestCase
+  include AuthHelper
   include FactoryBot::Syntax::Methods
   parallelize(workers: :number_of_processors)
   fixtures :all
-
-  include AuthHelper
 end
