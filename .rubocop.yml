@@ -446,6 +446,9 @@ Layout/ExtraSpacing:
   Description: 'Do not use unnecessary spacing.'
   Enabled: true
 
+Layout/EndOfLine:
+   Enabled: False
+
 Layout/MultilineOperationIndentation:
   Description: >-
                  Checks indentation of binary operations that span more than

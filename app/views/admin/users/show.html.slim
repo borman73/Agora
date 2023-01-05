@@ -1,0 +1,12 @@
+h1 User profile
+p
+  span First Name:&nbsp;
+  strong= @user.first_name
+p
+  span Last Name:&nbsp;
+  strong= @user.last_name
+p
+  span E-mail:&nbsp;
+  strong= @user.email
+
+= link_to "Back to users list", admin_users_path
