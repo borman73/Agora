@@ -20,6 +20,7 @@ gem 'kaminari'
 gem 'ransack'
 gem 'responders'
 gem 'active_model_serializers'
+gem 'bootstrap', '~> 5.1.3'
 
 group :development, :test do
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
