@@ -1,0 +1,84 @@
+.centered {
+    position: fixed;
+    min-height: 100vh;
+    height: 100%;
+    top: 0;
+    left: 0; 
+    margin: 0 auto;
+    overflow: auto;
+    align-items: flex-start;
+    display: flex;
+}
+
+
+.bg-img {
+    background: url(bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.admin {
+    background: url(bg-admin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: fixed;
+}
+
+.card {
+    border-bottom-right-radius: 4em;
+    border-top-left-radius: 4em;
+    margin: 0 auto;
+    align-self: center;
+
+}
+
+.card.simple {
+    border-radius: 1em;
+    padding: 1em 2em 0 2em;
+    min-height: 40em;
+    margin: auto;
+    align-self: center;
+
+}
+
+.btn {
+    border-radius:2em;
+    padding: .5em 1.5em;
+}
+
+p span {
+    padding-inline: 0.5em;
+}
+
+p a {
+    text-decoration: none;
+}
+
+.spread {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url(expand_more.svg);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 8px) center;
+}
+
+.sort_link {
+    text-decoration: none;
+}
+
+.button_to {
+    display: inline;
+}

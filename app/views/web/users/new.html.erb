@@ -1,0 +1,27 @@
+<div class="container-fluid centered bg-img">
+  <div class="card shadow-sm p-3 pb-0" style="width: 24rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Sign up</h5>
+        <%= simple_form_for @user do |f| %>
+          <div class="mb-3">
+            <%= f.input :first_name %>
+          </div> 
+          <div class="mb-3">
+            <%= f.input :last_name %>
+          </div> 
+          <div class="mb-3">
+            <%= f.input :email %>
+          </div> 
+          <div class="mb-3">
+            <%= f.input :password %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :password_confirmation%>
+          </div> 
+          <div class="mb-3">
+            <%= f.button :submit, "Sign up", class: 'btn btn-primary btn-floating' %>
+          </div> 
+        <% end %>
+    </div>
+  </div>
+<div>
