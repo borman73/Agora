@@ -17,10 +17,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootsnap', require: false
 gem 'slim-rails'
 gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 gem 'ransack'
 gem 'responders'
 gem 'active_model_serializers'
 gem 'bootstrap', '~> 5.1.3'
+gem 'font-awesome-sass', '~> 6.1'
 
 group :development, :test do
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]

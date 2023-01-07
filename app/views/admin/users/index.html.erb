@@ -1,0 +1,63 @@
+<div class="container-fluid centered admin pt-4">
+  <div class="card simple mb-4 pb-2" style="width: 64em;">
+    <div class="card-body">
+        <div class="row spread mb-3";>
+          <div class="col-8">
+            <%= button_to new_admin_user_path, method: "get", class: 'btn btn-primary' do %>
+              <i class="fas fa-add"></i>
+              <%= "Add new user" %>
+              <% end %>
+          </div>
+          <div class="input-group col" style="justify-content: end;">
+            <%= search_form_for(@q, url:admin_users_url, method: :get) do |f| %>
+            <%= f.search_field :first_name_or_last_name_or_email_cont, class: "form-control rounded", 
+                placeholder: "Search" %>
+            <% end %>
+          </div>
+        </div>    
+        <h5 class="card-title text-center">Users list</h5>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><%= sort_link(@q, :id, "#") %></th>
+                <th><%= sort_link(@q, :first_name, "First Name") %></th>
+                <th><%= sort_link(@q, :last_name, "Last Name") %></th>
+                <th><%= sort_link(@q, :email, "E-mail") %></th>
+                <th><%= sort_link(@q, :created_at, "Registration date") %></th>
+                <th><%= sort_link(@q, :type, "Type") %></th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.id %></td>
+                  <td><%= user.first_name %></td>
+                  <td><%= user.last_name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.created_at.to_date %></td>
+                  <td><%= user.type %></td>
+                  <td>
+                    <%= button_to edit_admin_user_path(user), method: "get", class: 'btn btn-sm btn-info' do %>
+                      <i class="fas fa-edit"></i>
+                      <%= "Edit" %>
+                      <% end %>
+                    <% if current_user.id != user.id %> 
+                      <%= button_to admin_user_path(user), method: "delete", class: 'btn btn-sm btn-danger' do %>
+                        <i class="fas fa-trash"></i>
+                        <%= "Delete" %>
+                        <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <div>
+          <%= paginate @users, theme: 'bootstrap-5',
+          pagination_class: "pagination-sm flex-wrap justify-content-center", nav_class: "inline" %>
+          <%= page_entries_info @users  %>
+        </div>
+    </div> 
+  </div>
+</div>

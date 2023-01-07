@@ -1,0 +1,19 @@
+<div class="container-fluid centered bg-img">
+  <div class="card shadow-sm p-3 pb-0" style="width: 24rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Sign in</h5>
+        <%= simple_form_for @session, url: session_path do |f| %>
+          <div class="mb-3">
+            <%= f.input :email %>
+          </div> 
+          <div class="mb-3">
+            <%= f.input :password %>
+          </div> 
+          <div class="mb-3">
+            <%= f.button :submit, "Sign in", class: 'btn btn-primary btn-floating' %>
+          </div> 
+        <% end %>
+        <p >Not a member? <span><%= link_to "Sign up", sign_up_path %></span></p>
+    </div>
+  </div>
+<div>
