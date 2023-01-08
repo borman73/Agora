@@ -82,3 +82,7 @@ select {
 .button_to {
     display: inline;
 }
+
+.italic {
+    font-style: italic !important;
+}

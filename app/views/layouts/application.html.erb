@@ -13,7 +13,15 @@
 
   <body>
     <div class="container-fluid">
+
+
+
       <%= yield %>
     </div>
+          <% flash.each do |type, msg| %>
+        <div class="alert alert-primary">
+          <%= msg %>
+        </div>
+      <% end %>
   </body>
 </html>

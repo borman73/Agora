@@ -1,0 +1,43 @@
+<div class="container-fluid centered bg-img"> 
+  <div class="card shadow-sm p-3 pb-0" style="width: 48rem;">
+    <div class="card-body">
+      <p class="h1 text-center"><%= @group.name  %></p>
+      <div class="mb-4 h5">
+        <%= @group.description  %>
+      </div>
+      <div class="mb-4 h5">
+        <h5>Group admin: <%= @group.owner.first_name %> <%= @group.owner.last_name %></h5>
+      </div>
+      <div>
+        <p class="italic">Group members:</p> 
+        <ul>
+         <% @group.users.each do |user| %>
+           <li><%= user.first_name %></li>
+         <% end %>
+        </ul>
+      </div>
+      <div class="text-center">
+
+        <% if @group.owner != current_user%> 
+
+          <% if @group.users.exclude?(current_user) %>
+            <%= button_to group_join_group_path(@group), method: "create", class: 'btn btn-lg btn-primary' do %>
+              <i class="fas fa-square-plus"></i>&nbsp;<%= "Join group" %>
+            <% end %>
+          <% else %>
+            <%= button_to group_leave_group_path(@group), method: "delete", class: 'btn btn-lg btn-warning' do %>
+              <i class="fas fa-arrow-right-from-bracket"></i>&nbsp;<%= "Leave group" %>
+            <% end %>
+          <% end %>
+
+        <% else %>
+
+          <%= button_to group_path(@group), method: "delete", class: 'btn btn-lg btn-danger' do %>
+            <i class="fas fa-trash"></i>&nbsp;<%= "Delete group" %>
+          <% end %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

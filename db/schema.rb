@@ -17,14 +17,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_175745) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_groups_on_owner_id"
   end
 
   create_table "user_groups", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "group_id"
-    t.string "role"
+    t.boolean "owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_user_groups_on_group_id"

@@ -1,8 +1,9 @@
 class Group < ApplicationRecord
-  has_many :user_groups, class_name: 'UserGroup'
+  belongs_to :owner, class_name: 'User'
+  has_many :user_groups, class_name: 'UserGroup', dependent: :destroy
   has_many :users, through: :user_groups, class_name: 'User'
-  has_many :votings, class_name: 'Voting'
+  has_many :votings, class_name: 'Voting', dependent: :destroy
   has_many :authors, through: :votings, class_name: 'User'
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end
