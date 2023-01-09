@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class GroupTest < ActiveSupport::TestCase
-  test 'create' do
+  test 'create group' do
     group = create(:group)
     assert group.persisted?
   end

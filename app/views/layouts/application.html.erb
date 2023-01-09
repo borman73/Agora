@@ -12,10 +12,9 @@
   </head>
 
   <body>
+        <%= render partial: "/layouts/navbar" %>
+
     <div class="container-fluid">
-
-
-
       <%= yield %>
     </div>
           <% flash.each do |type, msg| %>

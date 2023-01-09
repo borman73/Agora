@@ -1,5 +1,5 @@
 FactoryBot.define do
-  sequence :string, aliases: [:first_name, :last_name, :password, :avatar, :name, :kind, :role] do |n|
+  sequence :string, aliases: [:first_name, :last_name, :password, :avatar, :name, :kind] do |n|
     "string#{n}"
   end
 
@@ -19,7 +19,7 @@ FactoryBot.define do
     (Time.now + n.day).to_date
   end
 
-  sequence :integer, aliases: [:group_id, :author_id, :quorum] do |n|
+  sequence :integer, aliases: [:group_id, :author_id, :quorum, :owner_id] do |n|
     1 + n
   end
 end
