@@ -13,14 +13,13 @@
 
   <body>
         <%= render partial: "/layouts/navbar" %>
-
-    <div class="container-fluid">
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-primary text-center">
+            <%= msg %>
+        </div>
+        <% end %> 
+    <div class="wrapper">
       <%= yield %>
     </div>
-          <% flash.each do |type, msg| %>
-        <div class="alert alert-primary">
-          <%= msg %>
-        </div>
-      <% end %>
   </body>
 </html>

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  sequence :string, aliases: [:first_name, :last_name, :password, :avatar, :name, :kind] do |n|
+  sequence :string, aliases: [:first_name, :last_name, :password, :name, :kind] do |n|
     "string#{n}"
   end
 
@@ -7,19 +7,25 @@ FactoryBot.define do
     "person#{n}@example.com"
   end
 
+  
   sequence :boolean, aliases: [:active] do
     true || false
   end
-
+  
   sequence :description do |n|
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. #{n}"
   end
-
+  
   sequence :date, aliases: [:start_date, :stop_date] do |n|
     (Time.now + n.day).to_date
   end
 
-  sequence :integer, aliases: [:group_id, :author_id, :quorum, :owner_id] do |n|
+  sequence :integer, aliases: [:group_id, :author_id, :quorum] do |n|
     1 + n
   end
+  
+  sequence :avatar do
+    'anon.png' || nil
+  end
+  
 end
