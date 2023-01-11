@@ -12,7 +12,13 @@
   </head>
 
   <body>
-    <div class="container-fluid">
+        <%= render partial: "/layouts/navbar" %>
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-primary text-center">
+            <%= msg %>
+        </div>
+        <% end %> 
+    <div class="wrapper">
       <%= yield %>
     </div>
   </body>

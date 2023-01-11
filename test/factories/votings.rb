@@ -6,8 +6,8 @@ FactoryBot.define do
     active
     start_date
     stop_date
-    author { create(:user) }
-    group { create(:group) }
+    author factory: :user
+    group factory: :group
     quorum
   end
 end

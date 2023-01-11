@@ -4,6 +4,8 @@ class CreateGroups < ActiveRecord::Migration[7.0]
       t.string :name
       t.text :description
 
+      t.references :owner
+
       t.timestamps
     end
   end

@@ -1,0 +1,108 @@
+<style>
+  .bg-color {
+  background-color: #072552;
+  }
+  #logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  }
+  .navbar-brand {
+  padding: 14px 20px;
+  font-size: 20px;
+  }
+  .logo-link a {
+  color: white;
+  text-decoration: none;
+  letter-spacing: .4rem; 
+  }
+  .navbar-nav {
+  width: 100%;
+  }
+  .nav-item {
+  padding: 6px 14px;
+  text-align: center;
+  }
+  .nav-link {
+  padding-bottom: 10px; 
+  }
+  .v-line {
+  background-color: gray;
+  width: 1px;
+  height: 20px;
+  }
+  .navbar-nav img {
+  max-height:30px;
+  width:auto;
+  vertical-align:middle;
+  border-radius: 50%;
+  }
+  .navbar-collapse.collapse.in {
+  display: block !important;
+  }
+  @media (max-width: 576px) {
+  .nav-item {
+  width: 100%;
+  text-align: left;
+  }
+  .v-line {
+  display: none;
+  }
+  }
+</style>
+<nav class="navbar navbar-expand-sm navbar-dark bg-color  py-0 px-0 d-flex">
+  <div class="navbar-brand"><%= link_to image_tag("logo.png", alt: "AGORA", id: "logo"), root_path %>&nbsp;
+    <span class="h5 logo-link"><%= link_to "AGORA", root_path %></span>
+  </div>
+  <% if current_user %>
+  <span class="v-line"></span>
+  <button class="navbar-toggler mx-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <div class="navbar-nav me-auto mb-2 mb-lg-0",>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "My groups", new_group_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Create group", new_group_path, class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
+    <div class="spread">
+      <% if current_user.is_a?(Admin) %>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Admin panel", admin_users_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <% end %>
+    </div>
+    <div class="mx-2">
+      <ul class="navbar-nav pt-1">
+      <% if current_user.avatar %>
+      <%= link_to my_profile_path, class: "nav-link" do %>
+      <li>
+        <%= image_tag("#{current_user.avatar}", alt: "avatar") %>
+      </li>
+      <% end %> 
+      <% else %>
+      <%= link_to my_profile_path, class: "nav-link" do %>
+      <li>
+        <%= image_tag("anon.png", alt: "avatar") %>
+      </li>
+      <% end %>                      
+      <% end %>
+      <%= link_to my_profile_path, class: "nav-link white", style: "padding-left: 0.3em;" do %>
+      <li>
+        <%= current_user.first_name %>
+      </li>
+      <% end %> 
+    </div>
+    <div class="m-2 mx-3" style="white-space: nowrap;">
+      <%= button_to "Sign out", sign_out_path, method: "delete", class: 'btn btn-sm btn-secondary'%>
+    </div>
+    <% end %>
+  </div>
+</nav>

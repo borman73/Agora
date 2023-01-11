@@ -16,8 +16,9 @@
             <%= f.input :password %>
           </div>
           <div class="mb-3">
-            <%= f.input :password_confirmation%>
+            <%= f.input :password_confirmation %>
           </div> 
+            <%= f.hidden_field :type, value: "User" %>
           <div class="mb-3">
             <%= f.button :submit, "Sign up", class: 'btn btn-primary btn-floating' %>
           </div> 

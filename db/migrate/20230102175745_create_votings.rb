@@ -4,7 +4,7 @@ class CreateVotings < ActiveRecord::Migration[7.0]
       t.string :name
       t.bigint :author_id
       t.text :description
-      t.string :kind
+      t.string :type
       t.boolean :active
       t.date :start_date
       t.date :stop_date

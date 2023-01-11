@@ -4,7 +4,7 @@ class CreateUserGroups < ActiveRecord::Migration[7.0]
       t.references :user
       t.references :group
 
-      t.string :role
+      t.boolean :owner
 
       t.timestamps
     end

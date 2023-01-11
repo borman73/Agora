@@ -1,11 +1,9 @@
 .centered {
-    position: fixed;
     min-height: 100vh;
     height: 100%;
     top: 0;
     left: 0; 
     margin: 0 auto;
-    overflow: auto;
     align-items: flex-start;
     display: flex;
 }
@@ -17,6 +15,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    z-index: -100;
 }
 
 .admin {
@@ -25,7 +24,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    position: fixed;
+    z-index: -100;
 }
 
 .card {
@@ -39,8 +38,8 @@
 .card.simple {
     border-radius: 1em;
     padding: 1em 2em 0 2em;
-    min-height: 40em;
-    margin: auto;
+    min-height: 30em;
+    margin: 0 auto;
     align-self: center;
 
 }
@@ -81,4 +80,15 @@ select {
 
 .button_to {
     display: inline;
+}
+
+.italic {
+    font-style: italic !important;
+}
+
+.alert {
+    z-index: 100;
+    /* padding-top: 3em;  */
+    position: fixed; 
+    width:100vw;
 }
