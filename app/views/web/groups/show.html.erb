@@ -5,8 +5,8 @@
       <div class="mb-4 h5">
         <%= @group.description  %>
       </div>
-      <div class="mb-4 h5">
-        <h5>Group admin: <%= @group.owner.first_name %> <%= @group.owner.last_name %></h5>
+      <div class="mb-4">
+        <span>Group admin: <strong><%= @group.owner.first_name %> <%= @group.owner.last_name %></strong></span>
       </div>
       <div>
         <p class="italic">Group members:</p> 
@@ -32,6 +32,9 @@
 
         <% else %>
 
+          <%= button_to edit_group_path(@group), method: "get", class: 'btn btn-lg btn-info' do %>
+            <i class="fas fa-edit"></i>&nbsp;<%= "Edit group" %>
+          <% end %>          
           <%= button_to group_path(@group), method: "delete", class: 'btn btn-lg btn-danger' do %>
             <i class="fas fa-trash"></i>&nbsp;<%= "Delete group" %>
           <% end %>

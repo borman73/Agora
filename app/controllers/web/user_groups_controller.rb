@@ -7,8 +7,8 @@ class Web::UserGroupsController < Web::ApplicationController
     @user_group = current_user.user_groups.build(group_id: @group[:id], owner: false)
     if @user_group.save
       flash[:notice] = "You've joined the group #{@group.name}"
+      redirect_to(group_path(@group))
     end
-    redirect_to(group_path(@group))
   end
 
   def destroy

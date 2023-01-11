@@ -16,6 +16,7 @@ class Web::UsersController < Web::ApplicationController
 
     if @user.save
       sign_in(@user)
+      flash[:notice] = 'Account was successfully created. Welcome to Agora!'
       redirect_to(:root)
     else
       render(:new)
@@ -25,6 +26,7 @@ class Web::UsersController < Web::ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      flash[:notice] = 'Your account has been successfully updated'
       redirect_to(my_profile_path)
     else
       render(:edit)
@@ -34,12 +36,13 @@ class Web::UsersController < Web::ApplicationController
   def destroy
     @user = current_user
     @user.destroy
+    flash[:notice] = 'Your account has been deleted'
     redirect_to(:sign_in)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar, :type)
   end
 end

@@ -1,0 +1,20 @@
+<div class="container-fluid centered bg-img">
+  <div class="card shadow-sm p-3 pb-0" style="width: 24rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Edit group information</h5>
+        <%= simple_form_for @group do |f| %>
+          <div class="mb-3">
+            <%= f.input :name %>
+          </div> 
+          <div class="mb-3">
+            <%= f.input :description, as: :text, input_html: { rows: 7 , :style => 'width: 100%'} %>
+          </div> 
+          <div class="mb-3 spread">
+            <%= f.button :submit, "Confirm", class: 'btn btn-primary btn-floating' %>
+            <%= f.button :submit, "< Back", formaction: group_path(@group), formmethod: "get",
+                class: 'btn btn-sm btn-outline-secondary btn-floating' %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+<div>

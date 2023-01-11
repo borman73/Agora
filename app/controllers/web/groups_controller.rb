@@ -26,6 +26,7 @@ class Web::GroupsController < Web::ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
+      flash[:notice] = 'Information was successfully updated'
       redirect_to(group_path(@group[:id]))
     else
       render(:edit)
@@ -36,7 +37,8 @@ class Web::GroupsController < Web::ApplicationController
     @group = Group.find(params[:id])
     if @group.owner == current_user
       @group.destroy
-      redirect_to(:root)
+      flash[:notice] = "Group #{@group.name} has been deleted"
+      redirect_to(root_path)
     end
   end
 

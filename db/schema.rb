@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_175745) do
     t.string "name"
     t.bigint "author_id"
     t.text "description"
-    t.string "kind"
+    t.string "type"
     t.boolean "active"
     t.date "start_date"
     t.date "stop_date"
