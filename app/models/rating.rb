@@ -1,0 +1,2 @@
+class Rating < Voting
+end
