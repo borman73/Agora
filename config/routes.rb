@@ -17,6 +17,10 @@ Rails.application.routes.draw do
       resource :user_group, only: [:create, :destroy]
         post 'join_group', to: 'user_groups#create', as: 'join_group'
         delete 'leave_group', to: 'user_groups#destroy', as: 'leave_group'
+      
+      resources :votings, except: [:new]
+      resources :ballots, only: [:new]
+      resources :ratings, only: [:new]
     end
   end
   

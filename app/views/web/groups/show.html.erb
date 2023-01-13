@@ -1,6 +1,32 @@
 <div class="container-fluid centered bg-img"> 
   <div class="card shadow-sm p-3 pb-0" style="width: 48rem;">
     <div class="card-body">
+    <div class="d-flex flex-row-reverse">
+
+        <% if @group.owner != current_user%> 
+
+          <% if @group.users.exclude?(current_user) %>
+            <%= button_to group_join_group_path(@group), method: "create", class: 'btn btn-sm btn-primary' do %>
+              <i class="fas fa-square-plus"></i>&nbsp;&nbsp;<%= "Join group" %>
+            <% end %>
+          <% else %>
+            <%= button_to group_leave_group_path(@group), method: "delete", class: 'btn btn-sm btn-warning' do %>
+              <i class="fas fa-arrow-right-from-bracket"></i>&nbsp;&nbsp;<%= "Leave group" %>
+            <% end %>
+          <% end %>
+
+        <% else %>
+
+          <%= button_to edit_group_path(@group), method: "get", class: 'btn btn-sm btn-info' do %>
+            <i class="fas fa-edit"></i>&nbsp;&nbsp;<%= "Edit group" %>
+          <% end %>          
+          <%= button_to group_path(@group), method: "delete", class: 'btn btn-sm btn-danger' do %>
+            <i class="fas fa-trash"></i>&nbsp;&nbsp;<%= "Delete group" %>
+          <% end %>
+
+        <% end %>
+      </div>
+
       <p class="h1 text-center"><%= @group.name  %></p>
       <div class="mb-4 h5">
         <%= @group.description  %>
@@ -8,39 +34,66 @@
       <div class="mb-4">
         <span>Group admin: <strong><%= @group.owner.first_name %> <%= @group.owner.last_name %></strong></span>
       </div>
-      <div>
-        <p class="italic">Group members:</p> 
-        <ul>
-         <% @group.users.each do |user| %>
-           <li><%= user.first_name %></li>
-         <% end %>
-        </ul>
-      </div>
-      <div class="text-center">
-
-        <% if @group.owner != current_user%> 
-
-          <% if @group.users.exclude?(current_user) %>
-            <%= button_to group_join_group_path(@group), method: "create", class: 'btn btn-lg btn-primary' do %>
-              <i class="fas fa-square-plus"></i>&nbsp;<%= "Join group" %>
-            <% end %>
-          <% else %>
-            <%= button_to group_leave_group_path(@group), method: "delete", class: 'btn btn-lg btn-warning' do %>
-              <i class="fas fa-arrow-right-from-bracket"></i>&nbsp;<%= "Leave group" %>
-            <% end %>
+      
+      <div class="row">
+        <div class="col">
+          <p class="italic">Group members:</p> 
+          <ul>
+          <% @group.users.each do |user| %>
+            <li><%= user.first_name %></li>
           <% end %>
-
-        <% else %>
-
-          <%= button_to edit_group_path(@group), method: "get", class: 'btn btn-lg btn-info' do %>
-            <i class="fas fa-edit"></i>&nbsp;<%= "Edit group" %>
-          <% end %>          
-          <%= button_to group_path(@group), method: "delete", class: 'btn btn-lg btn-danger' do %>
-            <i class="fas fa-trash"></i>&nbsp;<%= "Delete group" %>
+          </ul>
+        </div>
+        <div class="col">
+          <p class="italic">Active ballots:</p> 
+          <ul>
+          <% @group.ballots.each do |ballot| %>
+            <% if ballot.active %>
+              <li>
+                <%= link_to group_voting_path(group_id: params[:id], id: ballot.id) do %>
+                  <%= ballot.name %>
+                <% end %>
+              </li>
+            <% end %>  
           <% end %>
-
-        <% end %>
+          </ul>
+        </div>
+        <div class="col">
+          <p class="italic">Active ratings:</p> 
+          <ul>
+          <% @group.ratings.each do |rating| %>
+            <% if rating.active %>
+              <li>
+                <%= link_to group_voting_path(group_id: params[:id], id: rating.id) do %>
+                  <%= rating.name %>
+                <% end %>
+              </li>
+            <% end %>  
+          <% end %>
+          </ul>
+        </div>
+        <div class="row">
+        <div class="col">
+          <%= button_to new_group_ballot_path(@group), method: "get", class: 'btn btn-sm btn-info' do %>
+            <i class="fas fa-bullhorn"></i>&nbsp;&nbsp;<%= "Invite people" %>
+          <% end %>
+        </div>
+        <div class="col">
+          <%= button_to new_group_ballot_path(@group), method: "get", class: 'btn btn-sm btn-success' do %>
+            <i class="fas fa-check-to-slot"></i>&nbsp;&nbsp;<%= "Create new ballot" %>
+          <% end %>
+        </div>
+        <div class="col">
+          <%= button_to new_group_rating_path(@group), method: "get", class: 'btn btn-sm btn-success' do %>
+            <i class="fas fa-star"></i>&nbsp;&nbsp;<%= "Create new rating" %>
+          <% end %>
+        </div>
       </div>
+      </div>
+
+      
+
+
     </div>
   </div>
 </div>

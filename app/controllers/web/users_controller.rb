@@ -26,7 +26,7 @@ class Web::UsersController < Web::ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:notice] = 'Your account has been successfully updated'
+      flash[:notice] = 'Your account was successfully updated'
       redirect_to(my_profile_path)
     else
       render(:edit)
@@ -36,7 +36,7 @@ class Web::UsersController < Web::ApplicationController
   def destroy
     @user = current_user
     @user.destroy
-    flash[:notice] = 'Your account has been deleted'
+    flash[:notice] = 'Your account was deleted'
     redirect_to(:sign_in)
   end
 

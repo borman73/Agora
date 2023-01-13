@@ -57,7 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_072322) do
     t.boolean "active"
     t.date "start_date"
     t.date "stop_date"
-    t.integer "quorum"
     t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

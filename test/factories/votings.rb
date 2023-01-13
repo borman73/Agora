@@ -7,7 +7,6 @@ FactoryBot.define do
     stop_date
     author factory: :user
     group factory: :group
-    quorum
     type { '' }
 
     factory :ballot do

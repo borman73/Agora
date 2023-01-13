@@ -8,7 +8,6 @@ class CreateVotings < ActiveRecord::Migration[7.0]
       t.boolean :active
       t.date :start_date
       t.date :stop_date
-      t.integer :quorum
 
       t.references :group
 

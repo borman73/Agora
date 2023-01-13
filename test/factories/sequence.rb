@@ -19,7 +19,7 @@ FactoryBot.define do
     (Time.now + n.day).to_date
   end
 
-  sequence :integer, aliases: [:group_id, :author_id, :voting_id, :quorum, :score] do |n|
+  sequence :integer, aliases: [:group_id, :author_id, :voting_id, :score] do |n|
     1 + n
   end
 
