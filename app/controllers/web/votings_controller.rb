@@ -1,5 +1,6 @@
 class Web::VotingsController < Web::ApplicationController
   before_action :set_voting, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: :update
 
   def index
     @votings = Voting.all
@@ -14,15 +15,8 @@ class Web::VotingsController < Web::ApplicationController
     @voting = @group.votings.create(voting_params)
 
     if @voting.save!
-
-      flash[:notice] = if @voting.type == 'Ballot'
-                         'Ballot was successfully created.'
-                       else
-                         'Rating was successfully created.'
-                       end
-
+      flash[:notice] = "#{@voting.type} was successfully created."
       redirect_to(group_voting_path(id: @voting.id))
-
     else
       render(:new)
     end
@@ -30,15 +24,18 @@ class Web::VotingsController < Web::ApplicationController
 
   def update
     if @voting.update(voting_params)
-      redirect_to(group_voting_path(@voting), notice: 'Voting was successfully updated.')
+      flash[:notice] = "#{@voting.type} was successfully updated."
+      redirect_to(group_voting_path(@voting))
     else
       render(:edit)
     end
   end
 
   def destroy
+    @group = Group.find(@voting.group_id)
     @voting.destroy
-    redirect_to(group_votings_path, notice: 'Voting was successfully deleted.')
+    flash[:notice] = "#{@voting.type} was successfully deleted."
+    redirect_to(group_path(@group.id))
   end
 
   private

@@ -1,1 +1,35 @@
-<br><br><br><br><br><br><br>adslkdjlaskdjalskdjlaksdjlaskjdlaksdj<br>
+<div class="container-fluid centered bg-img"> 
+  <div class="card shadow-sm p-3 pb-0" style="width: 48rem;">
+    <div class="card-body">
+      <div class="d-flex flex-row-reverse mb-4">
+        <% if @voting.author == current_user%> 
+          <%= button_to group_voting_path(@voting), method: "delete", class: 'btn btn-sm btn-danger' do %>
+            <i class="fas fa-trash"></i>&nbsp;&nbsp;<%= "Delete" %>
+          <% end %>  
+          <%= button_to edit_group_voting_path(@voting), method: "get", class: 'btn btn-sm btn-info me-md-2' do %>
+            <i class="fas fa-edit"></i>&nbsp;&nbsp;<%= "Edit" %>
+          <% end %>          
+        <% end %>
+      </div>
+      <p class="mb-3 h3">
+        <%= @voting.name %>
+      </p>
+      <hr>
+      <div class="row mb-2">
+        <div class="col">
+          <span>Author: <strong><%= @voting.author.first_name %>&nbsp;<%= @voting.author.last_name %></strong></span>
+        </div>
+        <div class="col">
+          <span>Start date: <strong><%= @voting.start_date %></strong></span>
+        </div>
+        <div class="col">
+          <span>End date: <strong><%= @voting.stop_date %></strong></span>
+        </div>
+      </div>
+      <hr>
+      <div class="mb-4 h5">
+        <span>Question:&nbsp;<%= @voting.question %></span>
+      </div>
+    </div>
+  </div>
+</div>

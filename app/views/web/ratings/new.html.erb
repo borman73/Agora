@@ -3,6 +3,7 @@
     <div class="card-body">
       <h5 class="card-title text-center">Create a new rating</h5>
         <%= simple_form_for @rating, as: :voting, url: group_votings_path do |f| %>
+          <%= f.hidden_field :type, value: "Rating" %>
           <%= f.hidden_field :active, value: true %>
           <%= f.hidden_field :author_id, value: current_user.id %>
           <div class="mb-3">
