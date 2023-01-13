@@ -1,0 +1,29 @@
+<div class="container-fluid centered bg-img">
+  <div class="card shadow-sm p-3 pb-0" style="width: 40rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Create a new rating</h5>
+      <%= simple_form_for @voting, as: :voting, url: group_votings_path do |f| %>
+        <div class="mb-3">
+          <%= f.input :name %>
+        </div> 
+        <div class="mb-3">
+         <%= f.input :question, as: :text, input_html: { rows: 3 , :style => 'width: 100%'} %>
+        </div> 
+        <div class="row">
+          <div class="mb-3 col">
+            <%= f.input :start_date, as: :date, html5: true %>
+          </div>
+          <div class="mb-3 col">
+            <%= f.input :stop_date, as: :date, html5: true %>
+          </div>
+        </div>
+        <div class="mb-3 spread">
+            <%= f.button :submit, "Confirm", formaction: group_voting_path(@voting.group_id), class: 'btn btn-primary btn-floating' %>
+            <%= f.button :submit, "< Back", formaction: group_voting_path(@voting.group_id), formmethod: "get",
+                class: 'btn btn-sm btn-outline-secondary btn-floating' %>
+          </div> 
+      <% end %>
+    </div>
+  </div>
+<div>
+

@@ -28,16 +28,14 @@ class Web::GroupsControllerTest < ActionController::TestCase
     assert_response :redirect
   end
 
-
   test 'should patch update group' do
-    user = create(:user)
     group = create(:group)
     group_attrs = attributes_for(:group)
     patch :update, params: { id: group.id, group: group_attrs }
     assert_response :redirect
   end
 
-  #Something is wrong!!! group.persisted? => true | respponse - 204 instead of redirect
+  # Something is wrong!!! group.persisted? => true | respponse - 204 instead of redirect
 
   test 'should delete destroy group' do
     group = create(:group)
@@ -46,5 +44,4 @@ class Web::GroupsControllerTest < ActionController::TestCase
     # assert_not group.persisted?
     # assert_response :redirect
   end
-
 end
