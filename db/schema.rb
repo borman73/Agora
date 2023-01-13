@@ -2,7 +2,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_072322) do
   enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.text "description"
     t.bigint "owner_id"
     t.datetime "created_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_072322) do
   end
 
   create_table "votings", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.bigint "author_id"
     t.text "question"
     t.string "type"

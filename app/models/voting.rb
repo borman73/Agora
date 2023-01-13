@@ -1,5 +1,5 @@
 class Voting < ApplicationRecord
-  validates :name, :question, presence: true
+  validates :title, :question, presence: true
 
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'

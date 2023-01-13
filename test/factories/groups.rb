@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :group do
-    name
+    title
     description
     owner factory: :user
   end

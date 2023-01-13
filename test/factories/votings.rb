@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :voting do
-    name
+    title
     question
     active
     start_date

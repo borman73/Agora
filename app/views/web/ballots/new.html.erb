@@ -7,7 +7,7 @@
           <%= f.hidden_field :active, value: true %>
           <%= f.hidden_field :author_id, value: current_user.id %>
           <div class="mb-3">
-            <%= f.input :name %>
+            <%= f.input :title %>
           </div> 
           <div class="mb-3">
             <%= f.input :question, as: :text, input_html: { rows: 3 , :style => 'width: 100%'} %>

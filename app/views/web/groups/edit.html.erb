@@ -4,7 +4,7 @@
       <h5 class="card-title text-center">Edit group information</h5>
         <%= simple_form_for @group do |f| %>
           <div class="mb-3">
-            <%= f.input :name %>
+            <%= f.input :title %>
           </div> 
           <div class="mb-3">
             <%= f.input :description, as: :text, input_html: { rows: 7 , :style => 'width: 100%'} %>

@@ -4,7 +4,7 @@
       <h5 class="card-title text-center">Create a new rating</h5>
       <%= simple_form_for @voting, as: :voting, url: group_votings_path do |f| %>
         <div class="mb-3">
-          <%= f.input :name %>
+          <%= f.input :title %>
         </div> 
         <div class="mb-3">
          <%= f.input :question, as: :text, input_html: { rows: 3 , :style => 'width: 100%'} %>
