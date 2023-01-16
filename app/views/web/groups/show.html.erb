@@ -26,7 +26,7 @@
         <% end %>
       </div>
 
-      <h1><%= @group.name %></h1>
+      <h1><%= @group.title%></h1>
 
       <div class="mb-4 mt-3 h5">
         <%= @group.description  %>
@@ -71,7 +71,7 @@
               <% if ballot.active %>
                 <li>
                   <%= link_to group_voting_path(group_id: params[:id], id: ballot.id) do %>
-                    <%= ballot.name %>
+                    <%= ballot.title %>
                   <% end %>
                 </li>
               <% end %>  
@@ -85,7 +85,7 @@
               <% if rating.active %>
                 <li>
                   <%= link_to group_voting_path(group_id: params[:id], id: rating.id) do %>
-                    <%= rating.name %>
+                    <%= rating.title %>
                   <% end %>
                 </li>
               <% end %>  

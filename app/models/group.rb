@@ -5,7 +5,6 @@ class Group < ApplicationRecord
   has_many :votings, class_name: 'Voting', dependent: :destroy
   has_many :ballots, class_name: 'Ballot', dependent: :destroy
   has_many :ratings, class_name: 'Rating', dependent: :destroy
-  has_many :authors, through: :votings, class_name: 'User'
 
-  validates :name, presence: true, uniqueness: true
+  validates :title, presence: true, uniqueness: true
 end

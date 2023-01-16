@@ -37,7 +37,7 @@ class Web::GroupsController < Web::ApplicationController
     @group = Group.find(params[:id])
     if @group.owner == current_user
       @group.destroy
-      flash[:notice] = "Group #{@group.name} has been deleted"
+      flash[:notice] = "Group #{@group.title} has been deleted"
       redirect_to(root_path)
     end
   end
@@ -45,6 +45,6 @@ class Web::GroupsController < Web::ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description)
+    params.require(:group).permit(:title, :description)
   end
 end
