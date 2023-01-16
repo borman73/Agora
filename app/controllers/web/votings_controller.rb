@@ -32,19 +32,30 @@ class Web::VotingsController < Web::ApplicationController
   end
 
   def destroy
+    @voting = Voting.find(params[:id])
     @group = Group.find(@voting.group_id)
     @voting.destroy
     flash[:notice] = "#{@voting.type} was successfully deleted."
     redirect_to(group_path(@group.id))
   end
 
+  def vote
+    @voting = Voting.includes(:options).find_by_id(params[:voting_id])
+    current_user.votes.create({option_id: params[:option][:id]})
+    flash[:notice] = "Your vote was successfully recorded."
+    redirect_to(group_voting_path(id: @voting.id))
+  end
+
   private
 
   def set_voting
-    @voting = Voting.find(params[:id])
+    @voting = Voting.includes(:options).find(params[:id])
   end
 
   def voting_params
-    params.require(:voting).permit(:title, :question, :type, :active, :start_date, :stop_date, :quorum, :author_id)
+    params.require(:voting).permit(
+      :title, :question, :type, :active, :start_date, :stop_date, :quorum, :author_id,
+      options_attributes: [:id, :value, :_destroy]
+    )
   end
 end

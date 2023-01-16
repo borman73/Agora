@@ -23,6 +23,9 @@ gem 'responders'
 gem 'active_model_serializers'
 gem 'bootstrap', '~> 5.1.3'
 gem 'font-awesome-sass', '~> 6.1'
+gem 'jquery-rails'
+gem 'jquery-turbolinks'
+gem 'cocoon'
 
 group :development, :test do
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
