@@ -31,12 +31,27 @@
         <span>Question:&nbsp;<%= @voting.question %></span>
       </div>
 
+
       <h5 class="card-title text-center mb-3 mt-2">Response options</h5>
 
+      <% if current_user.already_voted?(@voting) %>
+        <% @voting.options.each do |option| %>
+          <div class="h5 row">
+            <li class="mb-2">
+              <%= option.value %>
+            </li>
+          </div>
+        <% end %>
+      <div class="mb-4 mt-4 h3 text-center italic text-warning">You have already voted!</div>
+      <% else %>
       <%= render 'ballot_vote_form' %>
+      <% end %>
 
+      <div class="d-flex flex-row-reverse mb-3 ">Total votes: <%= @voting.votes.count %></div>
 
+       
 
+      
     </div>
   </div>
 </div>

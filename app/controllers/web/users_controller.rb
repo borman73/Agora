@@ -39,7 +39,7 @@ class Web::UsersController < Web::ApplicationController
     flash[:notice] = 'Your account was deleted'
     redirect_to(:sign_in)
   end
-
+ 
   private
 
   def user_params

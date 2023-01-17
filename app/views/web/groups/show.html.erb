@@ -1,7 +1,7 @@
 <div class="container-fluid centered bg-img"> 
   <div class="card shadow-sm p-3 pb-0" style="width: 48rem;">
     <div class="card-body">
-      <div class="d-flex flex-row-reverse mb-4">
+      <div class="d-flex flex-row-reverse mb-2">
         <% if @group.owner != current_user%> 
 
           <% if @group.users.exclude?(current_user) %>
@@ -28,32 +28,37 @@
 
       <h1><%= @group.title%></h1>
 
-      <div class="mb-4 mt-3 h5">
+      <div class="mb-5 mt-3 h5">
         <%= @group.description  %>
       </div>
 
-      <div class="mb-4">
-        <span>Group admin: <strong><%= @group.owner.first_name %> <%= @group.owner.last_name %></strong></span>
-      </div>
-      <% if @group.owner == current_user%>
       <div class="row">
-        <div class="col">
-          <%= button_to new_group_ballot_path(@group), method: "get", class: 'btn btn-sm btn-warning' do %>
-            <i class="fas fa-bullhorn"></i>&nbsp;&nbsp;<%= "Invite people" %>
-          <% end %>
-        </div>
-        <div class="col">
+
+        <% if @group.owner == current_user%>
+          <div class="col-4">
+            <%= button_to new_group_ballot_path(@group), method: "get", class: 'btn btn-sm btn-warning' do %>
+              <i class="fas fa-bullhorn"></i>&nbsp;&nbsp;<%= "Invite people" %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="col-4">
+            <span>Group admin: <strong><%= @group.owner.first_name %>&nbsp;<%= @group.owner.last_name %></strong></span>
+          </div>    
+        <% end %>
+
+        <div class="col-4">
           <%= button_to new_group_ballot_path(@group), method: "get", class: 'btn btn-sm btn-success' do %>
             <i class="fas fa-check-to-slot"></i>&nbsp;&nbsp;<%= "Create new ballot" %>
           <% end %>
         </div>
-        <div class="col">
+        <div class="col-4">
           <%= button_to new_group_rating_path(@group), method: "get", class: 'btn btn-sm btn-success' do %>
             <i class="fas fa-star"></i>&nbsp;&nbsp;<%= "Create new rating" %>
           <% end %>
         </div>
+
       </div>
-      <% end %>
+
       <hr>
       <div class="row">
         <div class="col-4">

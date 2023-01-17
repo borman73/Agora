@@ -41,9 +41,13 @@ class Web::VotingsController < Web::ApplicationController
 
   def vote
     @voting = Voting.includes(:options).find_by_id(params[:voting_id])
-    current_user.votes.create({option_id: params[:option][:id]})
-    flash[:notice] = "Your vote was successfully recorded."
-    redirect_to(group_voting_path(id: @voting.id))
+    vote = current_user.votes.create({option_id: params[:option][:id]})
+    if vote.save!
+      flash[:notice] = "Your vote was successfully recorded."
+      redirect_to(group_voting_path(id: @voting.id))
+    else
+      flash[:error] = "Something went wrong."
+    end  
   end
 
   private
