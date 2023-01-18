@@ -92,3 +92,7 @@ select {
     position: fixed; 
     width:100vw;
 }
+
+.d-flex[style*="display:none"], .d-flex[style*="display: none"] {
+    display:none !important;
+}

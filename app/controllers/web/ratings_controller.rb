@@ -1,6 +1,6 @@
 class Web::RatingsController < Web::VotingsController
   def new
-    @rating = Rating.new
-    @rating.options.build
+    @voting = Rating.new
+    @voting.options.build
   end
 end

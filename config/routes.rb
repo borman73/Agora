@@ -20,7 +20,6 @@ Rails.application.routes.draw do
       
         resources :ballots, only: [:new]
         resources :ratings, only: [:new]
-        
         resources :votings, except: [:new] do
           post 'vote', to: 'votings#vote', as: 'vote'
         end  

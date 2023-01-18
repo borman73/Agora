@@ -58,7 +58,7 @@ class Web::VotingsController < Web::ApplicationController
 
   def voting_params
     params.require(:voting).permit(
-      :title, :question, :type, :active, :start_date, :stop_date, :quorum, :author_id,
+      :title, :question, :type, :active, :start_date, :stop_date, :author_id,
       options_attributes: [:id, :value, :_destroy]
     )
   end

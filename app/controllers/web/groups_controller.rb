@@ -6,7 +6,7 @@ class Web::GroupsController < Web::ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.includes(:votings).find(params[:id])
   end
 
   def edit

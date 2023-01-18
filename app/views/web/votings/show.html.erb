@@ -2,13 +2,13 @@
   <div class="card shadow-sm p-3 pb-0" style="width: 48rem;">
     <div class="card-body">
       <div class="d-flex flex-row-reverse mb-4">
-        <% if @voting.author == current_user%> 
-          <%= button_to group_voting_path(@voting), method: "delete", class: 'btn btn-sm btn-danger' do %>
+        <% if @voting.author == current_user %> 
+          <%= button_to group_voting_path(@voting.group_id), method: "delete", class: 'btn btn-sm btn-danger' do %>
             <i class="fas fa-trash"></i>&nbsp;&nbsp;<%= "Delete" %>
-          <% end %>  
-          <%= button_to edit_group_voting_path(@voting), method: "get", class: 'btn btn-sm btn-info me-md-2' do %>
+          <% end %>
+          <%= button_to edit_group_voting_path(@voting.group_id), method: "get", class: 'btn btn-sm btn-info me-md-2' do %>
             <i class="fas fa-edit"></i>&nbsp;&nbsp;<%= "Edit" %>
-          <% end %>          
+          <% end %>
         <% end %>
       </div>
       <p class="mb-3 h3">
@@ -30,10 +30,7 @@
       <div class="mb-4 mt-4 h5">
         <span>Question:&nbsp;<%= @voting.question %></span>
       </div>
-
-
       <h5 class="card-title text-center mb-3 mt-2">Response options</h5>
-
       <% if current_user.already_voted?(@voting) %>
         <% @voting.options.each do |option| %>
           <div class="h5 row">
@@ -44,14 +41,13 @@
         <% end %>
       <div class="mb-4 mt-4 h3 text-center italic text-warning">You have already voted!</div>
       <% else %>
-      <%= render 'ballot_vote_form' %>
+        <% if @voting.type == "Ballot" %>
+          <%= render 'ballot_vote_form' %>
+        <% else %>
+          <%= render 'rating_vote_form' %>
+        <% end %>
       <% end %>
-
       <div class="d-flex flex-row-reverse mb-3 ">Total votes: <%= @voting.votes.count %></div>
-
-       
-
-      
     </div>
   </div>
 </div>
