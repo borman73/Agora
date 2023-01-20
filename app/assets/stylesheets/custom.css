@@ -8,7 +8,6 @@
     display: flex;
 }
 
-
 .bg-img {
     background: url(bg.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -91,4 +90,8 @@ select {
     /* padding-top: 3em;  */
     position: fixed; 
     width:100vw;
+}
+
+.d-flex[style*="display:none"], .d-flex[style*="display: none"] {
+    display:none !important;
 }

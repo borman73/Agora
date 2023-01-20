@@ -1,5 +1,5 @@
-<%= simple_form_for @ballot, as: :voting, url: group_votings_path do |f| %>
-  <%= f.hidden_field :type, value: "Ballot" %>
+<%= simple_form_for @voting, as: :voting, url: group_votings_path do |f| %>
+  <%= f.hidden_field :type, value: "Rating" %>
   <%= f.hidden_field :active, value: true %>
   <%= f.hidden_field :author_id, value: current_user.id %>
   <div class="mb-3">
@@ -17,7 +17,7 @@
     </div>
   </div> 
 
-  <h5 class="card-title text-center mt-2">Response options</h5>
+  <h5 class="card-title text-center mt-2">Objects to rate</h5>
   
     <%= f.simple_fields_for :options do |opt| %>
       <%= render 'option_fields', f: opt %>
@@ -25,10 +25,10 @@
 
     <div class='links'>
       <%= link_to_add_association f, :options, class: "btn btn-sm btn-info" do %>
-        <i class="fas fa-plus"></i>&nbsp;&nbsp;<%= "Add option" %>
+        <i class="fas fa-plus"></i>&nbsp;&nbsp;<%= "Add object" %>
       <% end %>
     </div>        
   <div class="mb-2 mt-3 text-center">
-    <%= f.button :submit, "Create ballot", class: 'btn btn-lg mb-3 btn-primary btn-floating' %>
+    <%= f.button :submit, "Create rating", class: 'btn btn-lg mb-3 btn-primary btn-floating' %>
   </div> 
 <% end %>

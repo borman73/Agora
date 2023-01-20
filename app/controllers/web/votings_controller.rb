@@ -41,13 +41,23 @@ class Web::VotingsController < Web::ApplicationController
 
   def vote
     @voting = Voting.includes(:options).find_by_id(params[:voting_id])
-    vote = current_user.votes.create({option_id: params[:option][:id]})
+    vote = current_user.votes.create({ option_id: params[:option][:id] })
     if vote.save!
-      flash[:notice] = "Your vote was successfully recorded."
+      flash[:notice] = 'Your vote was successfully recorded.'
       redirect_to(group_voting_path(id: @voting.id))
     else
-      flash[:error] = "Something went wrong."
-    end  
+      flash[:error] = 'Something went wrong.'
+    end
+  end
+
+  def rate
+    @voting = Voting.includes(:options).find_by_id(params[:voting_id])
+    data = params['value'][0].values[0]
+    data.each do |key, value|
+      current_user.votes.create({ option_id: key, score: value })
+    end
+    flash[:notice] = 'Your rating was successfully recorded.'
+    redirect_to(group_voting_path(id: @voting.id))
   end
 
   private
@@ -58,7 +68,7 @@ class Web::VotingsController < Web::ApplicationController
 
   def voting_params
     params.require(:voting).permit(
-      :title, :question, :type, :active, :start_date, :stop_date, :quorum, :author_id,
+      :title, :question, :type, :active, :start_date, :stop_date, :author_id,
       options_attributes: [:id, :value, :_destroy]
     )
   end

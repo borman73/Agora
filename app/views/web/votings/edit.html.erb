@@ -9,6 +9,7 @@
         <div class="mb-3">
          <%= f.input :question, as: :text, input_html: { rows: 3 , :style => 'width: 100%'} %>
         </div> 
+
         <div class="row">
           <div class="mb-3 col">
             <%= f.input :start_date, as: :date, html5: true %>
@@ -16,23 +17,22 @@
           <div class="mb-3 col">
             <%= f.input :stop_date, as: :date, html5: true %>
           </div>
+        </div>
 
-        <h5 class="card-title text-center mt-2">Response options</h5>
         <%= f.simple_fields_for :options do |opt| %>
           <%= render 'option_fields', f: opt %>
         <% end %>
+
         <div class='links'>
           <%= link_to_add_association f, :options, class: "btn btn-sm btn-info" do %>
             <i class="fas fa-plus"></i>&nbsp;&nbsp;<%= "Add option" %>
           <% end %>
         </div>    
-
-
         <div class="mb-3 mt-4 spread">
-            <%= f.button :submit, "Confirm", formaction: group_voting_path(@voting.group_id), class: 'btn btn-lg btn-primary btn-floating' %>
-            <%= f.button :submit, "< Back", formaction: group_voting_path(@voting.group_id), formmethod: "get",
-                class: 'btn btn-sm btn-outline-secondary btn-floating' %>
-          </div> 
+          <%= f.button :submit, "Confirm", formaction: group_voting_path(@voting.group_id), class: 'btn btn-lg btn-primary btn-floating' %>
+          <%= f.button :submit, "< Back", formaction: group_voting_path(@voting.group_id), formmethod: "get",
+              class: 'btn btn-sm btn-outline-secondary btn-floating' %>
+        </div> 
       <% end %>
     </div>
   </div>

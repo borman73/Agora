@@ -1,0 +1,25 @@
+<div class="nested-fields row d-flex mb-3">
+
+  <% if @voting.type == "Ballot" %>
+
+    <div class="col-10"> <%= f.input :value, label: "Option" %></div>
+    <div class="col-2 align-self-end">
+      <% unless f.index == 0 || f.index == 1 %>
+        <%= link_to_remove_association "Delete", f, class: "btn btn-sm btn-secondary"%>
+      <% end %>
+    </div>
+
+  <% else %>
+
+    <div class="col-10"> <%= f.input :value, label: "Object" %></div>
+      <div class="col-2 align-self-end">
+        <% unless f.index == 0 %>
+          <%= link_to_remove_association "Delete", f, class: "btn btn-sm btn-secondary"%>
+        <% end %>
+   </div>
+
+
+  <% end %>
+
+
+</div> 

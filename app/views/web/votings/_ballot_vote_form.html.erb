@@ -1,4 +1,4 @@
-<%= form_tag group_voting_vote_path(voting_id: @voting.id), method: :post, remote: true do %>
+<%= form_tag group_voting_vote_path(voting_id: @voting.id) do %>
   <ol>
     <% @voting.options.each do |option| %>
       <div class="h5 row row-cols-auto">
