@@ -30,7 +30,6 @@
       <div class="mb-4 mt-4 h5">
         <span>Question:&nbsp;<%= @voting.question %></span>
       </div>
-      <h5 class="card-title text-center mb-3 mt-2">Response options</h5>
       <% if current_user.already_voted?(@voting) %>
         <% @voting.options.each do |option| %>
           <div class="h5 row">

@@ -1,20 +1,16 @@
-<%= form_tag group_voting_vote_path(voting_id: @voting.id), method: :post, remote: true do %>
-  <ol>
-    <% @voting.options.each do |option| %>
-      <div class="h5 row row-cols-auto">
-
-        <div class="col">
-          <li class="mb-2">
+<ol>
+  <%= form_tag group_voting_rate_path(voting_id: @voting.id) do |f  | %>
+    <% @voting.options.map do |option| %>
+      <div class="h5 row">
+          <li class="mb-3">
+          <div class="col">
             <%= option.value %>
+            <%= hidden_field_tag 'option[][id]', option.id %>
+          </div>  
+            <%= range_field "value[][score]", option.id, class: "form-range mt-2" %>
           </li>
-        </div>    
- 
-        <div class="col float-right"">
-          <%= radio_button_tag 'option[id]', option.id %>
-        </div>   
-
       </div>
     <% end %>
-  </ol>
-  <div class="text-center"><%= submit_tag 'Rate', class: 'btn btn-lg btn-primary' %></div>
-<% end %>
+    <div class="text-center"><%= submit_tag 'Rate', class: 'btn btn-lg btn-primary' %></div>
+  <% end %>
+</ol>
