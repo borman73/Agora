@@ -1,5 +1,10 @@
 class Web::GroupsController < Web::ApplicationController
   before_action :authenticate_user!
+  before_action :set_group, only: [:edit, :update, :destroy]
+
+  def index
+    @groups = current_user.groups
+  end
 
   def new
     @group = Group.new
@@ -9,9 +14,7 @@ class Web::GroupsController < Web::ApplicationController
     @group = Group.includes(:votings).find(params[:id])
   end
 
-  def edit
-    @group = Group.find(params[:id])
-  end
+  def edit; end
 
   def create
     @group = current_user.owned_groups.build(group_params)
@@ -24,7 +27,6 @@ class Web::GroupsController < Web::ApplicationController
   end
 
   def update
-    @group = Group.find(params[:id])
     if @group.update(group_params)
       flash[:notice] = 'Information was successfully updated'
       redirect_to(group_path(@group[:id]))
@@ -34,7 +36,6 @@ class Web::GroupsController < Web::ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
     if @group.owner == current_user
       @group.destroy
       flash[:notice] = "Group #{@group.title} has been deleted"
@@ -43,6 +44,10 @@ class Web::GroupsController < Web::ApplicationController
   end
 
   private
+
+  def set_group
+    @group = Group.find(params[:id])
+  end
 
   def group_params
     params.require(:group).permit(:title, :description)

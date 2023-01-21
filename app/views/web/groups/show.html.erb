@@ -3,7 +3,6 @@
     <div class="card-body">
       <div class="d-flex flex-row-reverse mb-2">
         <% if @group.owner != current_user%> 
-
           <% if @group.users.exclude?(current_user) %>
             <%= button_to group_join_group_path(@group), method: "create", class: 'btn btn-sm btn-primary' do %>
               <i class="fas fa-square-plus"></i>&nbsp;&nbsp;<%= "Join group" %>
@@ -13,27 +12,18 @@
               <i class="fas fa-arrow-right-from-bracket"></i>&nbsp;&nbsp;<%= "Leave group" %>
             <% end %>
           <% end %>
-
         <% else %>
-
           <%= button_to group_path(@group), method: "delete", class: 'btn btn-sm btn-danger' do %>
             <i class="fas fa-trash"></i>&nbsp;&nbsp;<%= "Delete group" %>
           <% end %>
-
           <%= button_to edit_group_path(@group), method: "get", class: 'btn btn-sm btn-info me-md-2' do %>
             <i class="fas fa-edit"></i>&nbsp;&nbsp;<%= "Edit group" %>
           <% end %>          
         <% end %>
       </div>
-
-      <h1><%= @group.title%></h1>
-
-      <div class="mb-5 mt-3 h5">
-        <%= @group.description  %>
-      </div>
-
+      <div class="card-title"><%= @group.title %></div>
+      <div class="mb-5 mt-2 h5"><%= @group.description %></div>
       <div class="row">
-
         <% if @group.owner == current_user%>
           <div class="col-4">
             <%= button_to new_group_ballot_path(@group), method: "get", class: 'btn btn-sm btn-warning' do %>
@@ -45,7 +35,6 @@
             <span>Group admin: <strong><%= @group.owner.first_name %>&nbsp;<%= @group.owner.last_name %></strong></span>
           </div>    
         <% end %>
-
         <div class="col-4">
           <%= button_to new_group_ballot_path(@group), method: "get", class: 'btn btn-sm btn-success' do %>
             <i class="fas fa-check-to-slot"></i>&nbsp;&nbsp;<%= "Create new ballot" %>
@@ -56,18 +45,16 @@
             <i class="fas fa-star"></i>&nbsp;&nbsp;<%= "Create new rating" %>
           <% end %>
         </div>
-
       </div>
-
       <hr>
-      <div class="row">
+      <div class="row no_bullets">
         <div class="col-4">
           <div class="italic mx-3">Group members:</div> 
-            <ul>
+          <ul>
             <% @group.users.each do |user| %>
               <li><%= user.first_name %></li>
             <% end %>
-            </ul>
+          </ul>
         </div>
         <div class="col-4">
           <div class="italic mx-3">Active ballots:</div>  
@@ -86,17 +73,18 @@
         <div class="col-4">
           <div class="italic mx-3">Active ratings:</div> 
             <ul>
-            <% @group.ratings.each do |rating| %>
-              <% if rating.active %>
-                <li>
-                  <%= link_to group_voting_path(group_id: params[:id], id: rating.id) do %>
-                    <%= rating.title %>
-                  <% end %>
-                </li>
-              <% end %>  
-            <% end %>
+              <% @group.ratings.each do |rating| %>
+                <% if rating.active %>
+                  <li>
+                    <%= link_to group_voting_path(group_id: params[:id], id: rating.id) do %>
+                      <%= rating.title %>
+                    <% end %>
+                  </li>
+                <% end %>  
+              <% end %>
             </ul>
         </div>
+      </div>  
     </div>
   </div>
 </div>

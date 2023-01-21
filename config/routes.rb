@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'my_profile', to: 'users#show', as: 'my_profile'
       get 'edit_profile', to: 'users#edit', as: 'edit_profile'
 
+    get 'my_groups', to: 'groups#index', as: 'my_groups'  
     resources :groups do
       resource :user_group, only: [:create, :destroy]
         post 'join_group', to: 'user_groups#create', as: 'join_group'
@@ -29,7 +30,6 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :users
-    resources :groups
   end
   
 end

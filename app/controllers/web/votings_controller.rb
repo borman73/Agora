@@ -52,8 +52,7 @@ class Web::VotingsController < Web::ApplicationController
 
   def rate
     @voting = Voting.includes(:options).find_by_id(params[:voting_id])
-    data = params['value'][0].values[0]
-    data.each do |key, value|
+    params['value'][0].values[0].each do |key, value|
       current_user.votes.create({ option_id: key, score: value })
     end
     flash[:notice] = 'Your rating was successfully recorded.'

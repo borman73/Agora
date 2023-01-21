@@ -1,20 +1,15 @@
 <%= form_tag group_voting_vote_path(voting_id: @voting.id) do %>
-  <ol>
-    <% @voting.options.each do |option| %>
-      <div class="h5 row row-cols-auto">
-
-        <div class="col">
-          <li class="mb-2">
-            <%= option.value %>
-          </li>
-        </div>    
- 
-        <div class="col float-right"">
-          <%= radio_button_tag 'option[id]', option.id %>
-        </div>   
-
-      </div>
-    <% end %>
-  </ol>
+  <% @voting.options.each do |option| %>
+    <div class="h5 row row-cols-auto">
+      <div class="col">
+        <li class="mb-2">
+          <%= option.value %>
+        </li>
+      </div>    
+      <div class="col float-right"">
+        <%= radio_button_tag 'option[id]', option.id %>
+      </div>   
+    </div>
+  <% end %>
   <div class="text-center"><%= submit_tag 'Vote', class: 'btn btn-lg btn-primary' %></div>
 <% end %>
