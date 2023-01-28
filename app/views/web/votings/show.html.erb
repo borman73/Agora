@@ -46,7 +46,8 @@
           <%= render 'rating_vote_form' %>
         <% end %>
       <% end %>
-      <div class="d-flex flex-row-reverse mb-3 ">Total votes: <%= @voting.votes.count %></div>
+      <%= render 'display' %>
+      </div>
     </div>
   </div>
 </div>

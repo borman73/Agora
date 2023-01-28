@@ -1,0 +1,6 @@
+<turbo-frame id="hide">
+  <div class="d-flex flex-row-reverse mb-3 ">
+    <%= link_to "Hide results", group_voting_hide_results_path(voting_id: @voting.id), class: "toggle_link" %>
+  </div>  
+  <%= render 'results' %>
+</turbo-frame>

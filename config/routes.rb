@@ -24,6 +24,8 @@ Rails.application.routes.draw do
         resources :votings, except: [:new] do
           post 'vote', to: 'votings#vote', as: 'vote'
           post 'rate', to: 'votings#rate', as: 'rate'
+          get 'display_results', to: 'votings#display_results', as: 'display_results'
+          get 'hide_results', to: 'votings#hide_results', as: 'hide_results'
         end  
     end
   end
