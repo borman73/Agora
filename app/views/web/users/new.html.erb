@@ -18,7 +18,12 @@
           <div class="mb-3">
             <%= f.input :password_confirmation %>
           </div> 
-            <%= f.hidden_field :type, value: "User" %>
+          <div class="mb-3">
+            <%= f.file_field :avatar %>
+          </div>
+          <%= image_tag(@user.avatar_url) if @user.avatar? %>
+          <%= f.hidden_field :avatar_cache %>   
+          <%= f.hidden_field :type, value: "User" %>
           <div class="mb-3">
             <%= f.button :submit, "Sign up", class: 'btn btn-primary btn-floating' %>
           </div> 

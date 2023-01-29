@@ -1,5 +1,5 @@
 <div class="container-fluid centered bg-img">
-  <div class="card shadow-sm p-3 pb-0" style="width: 24rem;">
+  <div class="card shadow-sm p-3 pb-0 mt-4 mb-4" style="width: auto;">
     <div class="card-body">
       <h5 class="card-title text-center">Edit profile</h5>
         <%= simple_form_for @user, as: :user, url: user_path(@user) do |f| %>
@@ -17,7 +17,16 @@
           </div>
           <div class="mb-3">
             <%= f.input :password_confirmation%>
-          </div> 
+          </div>
+          <div class="mb-3">
+            <%= f.label "Avatar" %>
+          <div class="mb-3">  
+            <%= f.file_field :avatar, class: "form-control form-control-sm"%>
+          </div>
+          <div class="profile_avatar mb-3">
+          <%= image_tag(@user.avatar_url) if @user.avatar? %>
+          </div>
+          <%= f.hidden_field :avatar_cache %> 
           <div class="mb-3 spread">
             <%= f.button :submit, "Confirm", class: 'btn btn-primary btn-floating' %>
             <%= f.button :submit, "< Back", formaction: my_profile_path, formmethod: "get",

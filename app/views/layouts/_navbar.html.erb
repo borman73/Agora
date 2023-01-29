@@ -29,7 +29,7 @@
     </div>
     <div class="mx-2">
       <ul class="navbar-nav pt-1">
-      <% if current_user.avatar %>
+      <% if current_user.avatar? %>
       <%= link_to my_profile_path, class: "nav-link" do %>
       <li>
         <%= image_tag("#{current_user.avatar}", alt: "avatar") %>
