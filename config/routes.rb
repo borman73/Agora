@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'my_profile', to: 'users#show', as: 'my_profile'
       get 'edit_profile', to: 'users#edit', as: 'edit_profile'
 
+    get 'my_groups', to: 'groups#index', as: 'my_groups'  
     resources :groups do
       resource :user_group, only: [:create, :destroy]
         post 'join_group', to: 'user_groups#create', as: 'join_group'
@@ -23,13 +24,14 @@ Rails.application.routes.draw do
         resources :votings, except: [:new] do
           post 'vote', to: 'votings#vote', as: 'vote'
           post 'rate', to: 'votings#rate', as: 'rate'
+          get 'display_results', to: 'votings#display_results', as: 'display_results'
+          get 'hide_results', to: 'votings#hide_results', as: 'hide_results'
         end  
     end
   end
   
   namespace :admin do
     resources :users
-    resources :groups
   end
   
 end

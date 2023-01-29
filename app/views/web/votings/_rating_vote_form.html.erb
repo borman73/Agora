@@ -1,16 +1,18 @@
-<ol>
-  <%= form_tag group_voting_rate_path(voting_id: @voting.id) do |f  | %>
-    <% @voting.options.map do |option| %>
-      <div class="h5 row">
-          <li class="mb-3">
-          <div class="col">
-            <%= option.value %>
-            <%= hidden_field_tag 'option[][id]', option.id %>
-          </div>  
-            <%= range_field "value[][score]", option.id, class: "form-range mt-2" %>
-          </li>
-      </div>
-    <% end %>
-    <div class="text-center"><%= submit_tag 'Rate', class: 'btn btn-lg btn-primary' %></div>
+<%= form_tag group_voting_rate_path(voting_id: @voting.id) do |f  | %>
+  <% @voting.options.each do |option| %>
+    <div class="h5">
+      <ul>
+        <li class="mb-5">
+          <%= option.value %>
+          <div class="range">
+            <%= range_field "value[][score]", option.id, min: 1, max: 10, step: 1, onchange: "nextElementSibling.value=value", class: "form-range" %>
+            <output>5</output>
+          </div>
+        </li>
+      </ul>    
+    </div>
   <% end %>
-</ol>
+  <div class="text-center"><%= submit_tag 'Rate', class: 'btn btn-lg btn-primary mt-4' %></div>
+<% end %>
+
+

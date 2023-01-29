@@ -8,7 +8,7 @@ gem 'sprockets-rails'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'importmap-rails'
-gem 'turbo-rails'
+gem 'turbo-rails', '1.3.2'
 gem 'stimulus-rails'
 gem 'jbuilder'
 gem 'bcrypt', '~> 3.1.7'
@@ -26,6 +26,7 @@ gem 'font-awesome-sass', '~> 6.1'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'cocoon'
+gem 'chartkick'
 
 group :development, :test do
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]

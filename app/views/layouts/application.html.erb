@@ -7,17 +7,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "custom", media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-        <%= render partial: "/layouts/navbar" %>
-        <% flash.each do |type, msg| %>
-          <div class="alert alert-primary text-center">
-            <%= msg %>
+      <%= render partial: "/layouts/navbar" %>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-primary alert-dismissible fade show text-center">
+          <%= msg %>
         </div>
-        <% end %> 
+      <% end %> 
     <div class="wrapper">
       <%= yield %>
     </div>
