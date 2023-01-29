@@ -1,6 +1,32 @@
-<div id="results_content">
-  <hr />
-  <div class="h5 text-center">
-    Total votes: <%= @voting.votes.count%>
+<hr />
+<% if @voting.type == "Ballot" %>
+  <div class="h5 row justify-content-center">
+    <div class="col-auto" style="min-width: 50%">
+      <table class="table table-hover"> 
+        <tbody>
+          <% @voting.options.each do |option| %>
+            <tr>
+              <td><%= option.value %></td>
+              <td class="text-center"><%= option.votes.count %></td>
+            </tr>
+          <% end %>
+            <tr class="table-info">
+              <td>Total votes: </td>
+              <td class="text-center"><%= @voting.votes.count %></td>
+            </tr>
+        </tbody> 
+      </table>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= bar_chart @chart_data, 
+    max: 10,
+    height: "20em",
+    width: "auto",
+    label: "Average rating",
+    colors: ["#0d6efd", "#0dcaf0", "#20c997", "#d63384", "#6f42c1", "#ffc107"],
+    loading: "Loading..." %>   
+  <div class="h5 text-center mt-3">
+    Total rates: <%= @voting.votes.count / @voting.options.count %> 
+  </div>
+<% end %>  

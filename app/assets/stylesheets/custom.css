@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .centered {
-	min-height: 100vh;
+	min-height: 91.8vh;
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -61,14 +61,6 @@
 	margin: 0 auto;
 	align-self: center;
 }
-
-.card a {
-	color: #0d6efd;
-	text-decoration: none;
-	display: inline-block;
-	border-bottom: 2px solid #0d6efd;
-	padding-bottom: 1px;
-  }
 
 .card-title {
 	color: transparent;    
@@ -136,8 +128,10 @@ select {
 
 .alert {
 	z-index: 100;
-	position: fixed;
-	width: 100vw;
+	position: relative;
+	margin: 0;
+	border-radius: 0;
+
 }
 
 .d-flex[style*="display:none"], .d-flex[style*="display: none"] {
@@ -249,7 +243,14 @@ select {
 }
 
 .toggle_link {
-
   border-bottom: 1px dashed !important;
   padding-bottom: 2px;
+}
+
+.text_link a {
+	color: #0d6efd;
+	text-decoration: none;
+	display: inline-block;
+	border-bottom: 2px solid #0d6efd;
+	padding-bottom: 1px;
 }

@@ -26,6 +26,7 @@ gem 'font-awesome-sass', '~> 6.1'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'cocoon'
+gem 'chartkick'
 
 group :development, :test do
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]

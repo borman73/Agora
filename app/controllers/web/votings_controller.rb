@@ -47,7 +47,7 @@ class Web::VotingsController < Web::ApplicationController
       redirect_to(group_voting_path(id: @voting.id))
     else
       flash[:error] = 'Something went wrong.'
-      render (:show)
+      render(:show)
     end
   end
 
@@ -62,18 +62,24 @@ class Web::VotingsController < Web::ApplicationController
 
   def display_results
     @voting = Voting.find_by_id(params[:voting_id])
-    render turbo_stream: turbo_stream.replace("display", partial: "hide")
+    if @voting.type == "Rating"
+      @chart_data = {}
+      @voting.options.map do |option|
+        @chart_data[option.value] = option.average_score
+      end
+    end  
+    render(turbo_stream: turbo_stream.replace('display', partial: 'hide', locals: { chart_data: @chart_data }))
   end
 
   def hide_results
     @voting = Voting.includes(:options).find_by_id(params[:voting_id])
-    render turbo_stream: turbo_stream.replace("hide", partial: "display")
+    render(turbo_stream: turbo_stream.replace('hide', partial: 'display'))
   end
 
   private
 
   def set_voting
-    @voting = Voting.includes(:options).find(params[:id])  
+    @voting = Voting.includes(:options).find(params[:id])
   end
 
   def voting_params
