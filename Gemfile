@@ -28,6 +28,7 @@ gem 'jquery-turbolinks'
 gem 'cocoon'
 gem 'chartkick'
 gem 'carrierwave', '>= 3.0.0.beta', '< 4.0'
+gem 'rmagick'
 
 group :development, :test do
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]

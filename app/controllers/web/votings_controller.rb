@@ -62,12 +62,12 @@ class Web::VotingsController < Web::ApplicationController
 
   def display_results
     @voting = Voting.find_by_id(params[:voting_id])
-    if @voting.type == "Rating"
+    if @voting.type == 'Rating'
       @chart_data = {}
       @voting.options.map do |option|
         @chart_data[option.value] = option.average_score
       end
-    end  
+    end
     render(turbo_stream: turbo_stream.replace('display', partial: 'hide', locals: { chart_data: @chart_data }))
   end
 
