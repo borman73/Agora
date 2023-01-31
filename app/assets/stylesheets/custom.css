@@ -101,7 +101,6 @@ p a {
 .profile_avatar img {
 	max-height: 10em;
 	width: auto;
-	vertical-align: middle;
 	border-radius: 50%;
 }
 
